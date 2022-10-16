@@ -1,10 +1,10 @@
+import os
 from crypt import methods
 import sys, json, csv, requests, random
 from flask import Flask, request, render_template, jsonify
 import country
 
 app = Flask('__name__')
-
 
 def get_weather(states):
 

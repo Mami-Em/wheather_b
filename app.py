@@ -2,6 +2,7 @@ import os
 from crypt import methods
 import sys, json, csv, requests, random
 from flask import Flask, request, render_template, jsonify
+from datetime import datetime
 import country
 
 app = Flask('__name__')
@@ -67,11 +68,6 @@ def w_type(temp):
 
 
 @app.route('/')
-def index():
-
-    return render_template('index.html')
-
-
 @app.route('/locate')
 def locate():
 
@@ -121,14 +117,19 @@ def locate():
     data_details = {
         'country_name': data['name'],
         'message': get_message(type),
+        'temp': data['main']['temp'],
         'weather': data['weather'][0]['description']
     }
 
     all_details = {
         'actual_location': data_details,
         'other_countries': to_render
-    }           
+    }
+               
 
     final_render.append(all_details)
 
-    return jsonify(final_render)
+    date = datetime.now()
+
+    return render_template('index.html',final_render = final_render, date = date.strftime("%d/%m/%y"))
+    # return jsonify(final_render)

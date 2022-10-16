@@ -68,6 +68,9 @@ def w_type(temp):
 
 
 @app.route('/')
+def index():
+    return render_template('index.html')
+    
 @app.route('/locate')
 def locate():
 

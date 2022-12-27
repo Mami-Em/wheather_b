@@ -13,7 +13,7 @@ def get_weather(states):
     get the weathers like by states/city/country
     '''
 
-    url = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={states}&units=metric&appid=552ca6c9da65ef5c52f9661ce82312bd')
+    url = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={states}&units=metric&appid={API_ID}')
     val = url.json()
 
     return val
